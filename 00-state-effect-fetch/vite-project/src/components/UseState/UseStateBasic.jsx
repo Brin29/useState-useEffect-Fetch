@@ -3,7 +3,7 @@ import { useState } from "react"
 
 // const [state, setState] = useState(initialState)
 
-export default function UseState(){
+export default function UseStateBasic(){
   // No se puede llamar dentro de condiciones o bucles
   // En el modo estricto React llamara la funcion dos veces
   const [age, setAge] = useState(0)
