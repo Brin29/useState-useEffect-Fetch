@@ -1,4 +1,5 @@
 import { useState } from "react"
+import "./Form.css"
 
 // Object to useState
 const objeto = {
@@ -38,24 +39,30 @@ function handleChange(e){
 
   return (
     <>
-      <h1>Formulario</h1>
-    
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Nombre:</label>
-          <input required id="name" name="firstName" type="text" value={form.firstName} onChange={handleChange}/>
+      <div className="form">
 
-        <label htmlFor="lastName">Apellido:</label>
-          <input required id="lastName" name="lastName" type="text" value={form.lastName} onChange={handleChange}/>
+        <div className="formContent">
 
-        <label htmlFor="url">Url:</label>
-          <input required id="url" type="text" name="url" value={form.url} onChange={handleChange}/>
+          <h1>Formulario</h1>
+        
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name">Nombre:</label>
+              <input required id="name" name="firstName" type="text" value={form.firstName} onChange={handleChange}/>
 
-        <button type="submit">Sign Up</button>
-      </form>
+            <label htmlFor="lastName">Apellido:</label>
+              <input required id="lastName" name="lastName" type="text" value={form.lastName} onChange={handleChange}/>
 
-      <p>{content.firstName}</p>
-      <p>{content.lastName}</p>
-      <img src={content.url} alt={content.firstName}/>
+            <label htmlFor="url">Url:</label>
+              <input required id="url" type="text" name="url" value={form.url} onChange={handleChange}/>
+
+            <button type="submit">Sign Up</button>
+          </form>
+        </div>
+
+        <p>{content.firstName}</p>
+        <p>{content.lastName}</p>
+        <img src={content.url} alt={content.firstName}/>
+      </div>
     </>
   )  
 }

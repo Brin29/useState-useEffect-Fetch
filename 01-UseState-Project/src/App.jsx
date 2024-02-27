@@ -1,4 +1,3 @@
-import './App.css'
 import { FormState } from './components/FormState'
 
 function App() {
