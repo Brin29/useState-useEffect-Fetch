@@ -1,5 +1,6 @@
 import { useState } from "react"
 
+// Object to useState
 const objeto = {
   firstName: "",
   lastName: "",
@@ -7,49 +8,54 @@ const objeto = {
 }
 
 export const Form = () => {
-const [form, setForm] = useState(objeto)  
+  // for to form
+  const [form, setForm] = useState(objeto)  
+  // for to content
+  const [content, setContent] = useState(objeto)  
+
+function handleSubmit(e){
+  e.preventDefault()
+  // destruction
+  const {name, value} = e.target
+
+  // render content in submit
+  setContent({
+    // spreed cause generate a new form and no muta
+    ...form,
+    [name]: value
+  })
+}
+
+function handleChange(e){
+  const {name, value} = e.target
+
+  setForm({
+    // spreed cause generate a new form and no muta
+    ...form,
+    [name]: value
+  })
+}
 
   return (
     <>
       <h1>Formulario</h1>
+    
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="name">Nombre:</label>
+          <input required id="name" name="firstName" type="text" value={form.firstName} onChange={handleChange}/>
 
-      <form>
-        <label>
-          Nombre:
-          <input type="text" value={form.firstName} onChange={(e) => {
-            setForm({
-              ...form,
-              firstName: e.target.value
-            })
-          }}/>
-        </label>
+        <label htmlFor="lastName">Apellido:</label>
+          <input required id="lastName" name="lastName" type="text" value={form.lastName} onChange={handleChange}/>
 
-        <label>
-          Apellido:
-          <input type="text" value={form.lastName} onChange={(e) => {
-            setForm({
-              ...form,
-              lastName: e.target.value
-            })
-          }} />
-        </label>
+        <label htmlFor="url">Url:</label>
+          <input required id="url" type="text" name="url" value={form.url} onChange={handleChange}/>
 
-        <label>
-          Url:
-          <input type="text" value={form.url} onChange={(e) => {
-            setForm({
-              ...form,
-              url: e.target.value
-            })
-          }}/>
-        </label>
-
-        <input type="submit"/>
+        <button type="submit">Sign Up</button>
       </form>
 
-      <p>{form.firstName}</p>
-      <p>{form.lastName}</p>
-      <img src={form.url} alt={form.firstName} />
+      <p>{content.firstName}</p>
+      <p>{content.lastName}</p>
+      <img src={content.url} alt={content.firstName}/>
     </>
   )  
 }
